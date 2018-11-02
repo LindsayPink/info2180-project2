@@ -30,7 +30,7 @@ function bckgrndPon () {
 function tilePlace () {
     let allPiece = document.body.children[2].children[0].children;
     $("#puzzlearea").css("display", "grid");
-    $("#puzzlearea").css("grid-template-columns", "98px 98px 98px 98px");
-    $("#puzzlearea").css("grid-template-rows", "98px 98px 98px 98px");
+    $("#puzzlearea").css("grid-template-columns", "100px 100px 100px 100px");
+    $("#puzzlearea").css("grid-template-rows", "100px 100px 100px 100px");
     $(allPiece).css("position", "relative");
 }
