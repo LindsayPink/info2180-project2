@@ -4,11 +4,6 @@ window.onload = function () {
     $(allPiece).addClass("puzzlepiece");
 
     bckgrndPon();
-
-    /*  for (let i = 0; i <= 15-1; i++) {
-        allPiece[i].classList.add("puzzlepiece");
-    }*/
-
 }
 
 function bckgrndPon () {
