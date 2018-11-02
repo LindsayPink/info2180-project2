@@ -4,6 +4,7 @@ window.onload = function () {
     $(allPiece).addClass("puzzlepiece");
 
     bckgrndPon();
+    tilePlace();
 }
 
 function bckgrndPon () {
@@ -24,4 +25,12 @@ function bckgrndPon () {
     $(allPiece[13]).css("background-position", "-100px -300px");
     $(allPiece[14]).css("background-position", "-200px -300px");
     $(allPiece[15]).css("background-position", "-300px -300px");
+}
+
+function tilePlace () {
+    let allPiece = document.body.children[2].children[0].children;
+    $("#puzzlearea").css("display", "grid");
+    $("#puzzlearea").css("grid-template-columns", "98px 98px 98px 98px");
+    $("#puzzlearea").css("grid-template-rows", "98px 98px 98px 98px");
+    $(allPiece).css("position", "relative");
 }
