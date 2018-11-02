@@ -3,11 +3,11 @@ window.onload = function () {
     let allPiece = document.body.children[2].children[0].children;
     $(allPiece).addClass("puzzlepiece");
 
-    bckgrndPon();
+    bckgrndPos();
     tilePlace();
 }
 
-function bckgrndPon () {
+function bckgrndPos () {
     let allPiece = document.body.children[2].children[0].children;
     $(allPiece[0]).css("background-position",  "0000px 0000px",);
     $(allPiece[1]).css("background-position",  "-100px 0000px");
