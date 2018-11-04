@@ -8,7 +8,7 @@ window.onload = function () {
 
     for(let i=0;i<pieces.length;i++) {
         pieces[i].onclick = function(){move(pieces[i])}
-        }    
+    }    
 }
 
 function bckgrndPos () {
@@ -89,6 +89,5 @@ function empty () {
 function move (tile) {
     empty();
     $(tile).css({"grid-row-start":free_row.toString(), "grid-column-start":free_col.toString()});
-    empty();
-    findTile();
+    $(tile).attr("id", "tile_"+((free_row).toString())+"_"+((free_col).toString()));
 }
