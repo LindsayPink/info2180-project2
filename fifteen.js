@@ -5,6 +5,10 @@ window.onload = function () {
 
     bckgrndPos();
     tilePlace();
+
+    for(let i=0;i<pieces.length;i++) {
+        pieces[i].onclick = function(){move(pieces[i])}
+        }    
 }
 
 function bckgrndPos () {
