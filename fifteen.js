@@ -8,7 +8,7 @@ window.onload = function () {
 }
 
 function bckgrndPos () {
-    $(allPiece[0]).css("background-position",  "0000px 0000px",);
+    $(allPiece[0]).css("background-position",  "0000px 0000px");
     $(allPiece[1]).css("background-position",  "-100px 0000px");
     $(allPiece[2]).css("background-position",  "-200px 0000px");
     $(allPiece[3]).css("background-position",  "-300px 0000px");
