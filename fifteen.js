@@ -46,3 +46,14 @@ function tilePlace () {
         $(row4[i]).css({"grid-row-start":r.toString(), "grid-column-start":(i+1).toString()});
     }
 }
+
+function findTile (r, c) {    
+    for (let i = 0; i <= pieces.length; i++) {
+        if ((parseInt($(pieces[i]).css("grid-row-start")))===r && 
+        ((parseInt($(pieces[i]).css("grid-column-start"))))===c) {
+            $(pieces[i]).attr("id", "tile_"+((r).toString())+"_"+((c).toString()));
+            return pieces[i];
+        }
+    }
+}
+
