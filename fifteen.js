@@ -35,15 +35,19 @@ function tilePlace () {
     let row4 = pieces.slice(12,15);
     for (let i = 0, r = 1; i <= row1.length; i++) {
         $(row1[i]).css({"grid-row-start":r.toString(), "grid-column-start":(i+1).toString()});
+        $(row1[i]).attr("id", "tile_"+((r).toString())+"_"+((i+1).toString()));
     }
     for (let i = 0, r = 2; i <= row2.length; i++) {
         $(row2[i]).css({"grid-row-start":r.toString(), "grid-column-start":(i+1).toString()});
+        $(row2[i]).attr("id", "tile_"+((r).toString())+"_"+((i+1).toString()));
     }
     for (let i = 0, r = 3; i <= row3.length; i++) {
         $(row3[i]).css({"grid-row-start":r.toString(), "grid-column-start":(i+1).toString()});
+        $(row3[i]).attr("id", "tile_"+((r).toString())+"_"+((i+1).toString()));
     }
     for (let i = 0, r = 4; i <= row4.length; i++) {
         $(row4[i]).css({"grid-row-start":r.toString(), "grid-column-start":(i+1).toString()});
+        $(row4[i]).attr("id", "tile_"+((r).toString())+"_"+((i+1).toString()));
     }
 }
 
