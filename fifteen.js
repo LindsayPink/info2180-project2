@@ -57,3 +57,24 @@ function findTile (r, c) {
     }
 }
 
+function empty () {
+    for (let i = 0; i <= 3; i++){
+        if ((findTile(1,i+1))===undefined) {
+            free_row = 1;
+            free_col = i+1;
+        }
+        else if ((findTile(2,i+1))===undefined) {
+            free_row = 2;
+            free_col = i+1;
+        }
+        else if ((findTile(3,i+1))===undefined) {
+            free_row = 3;
+            free_col = i+1;
+        }
+        else if ((findTile(4,i+1))===undefined) {
+            free_row = 4;
+            free_col = i+1;
+        }
+    }
+}
+
