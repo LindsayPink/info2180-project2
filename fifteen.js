@@ -78,3 +78,9 @@ function empty () {
     }
 }
 
+function move (tile) {
+    empty();
+    $(tile).css({"grid-row-start":free_row.toString(), "grid-column-start":free_col.toString()});
+    empty();
+    findTile();
+}
