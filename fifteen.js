@@ -5,6 +5,7 @@ window.onload = function () {
     pieces = Array.from(allPiece);
     $(allPiece).addClass("puzzlepiece");
     btn = document.getElementById("shufflebutton");
+    num_shifts = 20;
     bckgrndPos();
     tilePlace();
     empty();
