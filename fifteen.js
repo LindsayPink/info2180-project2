@@ -11,6 +11,7 @@ window.onload = function () {
     empty();
     moveable();
     try_move();
+    shuffle();
 }
 
 function bckgrndPos () {
