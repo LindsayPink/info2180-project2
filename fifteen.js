@@ -3,7 +3,7 @@ window.onload = function () {
     pieces = Array.from(allPiece); //converts HTML collection to array so that array methods can be done on them
     $(allPiece).addClass("puzzlepiece"); //applies puzzlepiece class to tiles
     btn = document.getElementById("shufflebutton"); //for accessing shuffle button
-    num_shifts = 20; //initializing var which determine the num of moves to be made when tiles are shuffled
+    num_shifts = null; //initializing var which determine the num of moves to be made when tiles are shuffled
     bckgrndPos();
     tilePlace();
     empty();
