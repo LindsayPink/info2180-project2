@@ -4,7 +4,7 @@ window.onload = function () {
     allPiece = document.body.children[2].children[0].children;
     pieces = Array.from(allPiece);
     $(allPiece).addClass("puzzlepiece");
-
+    btn = document.getElementById("shufflebutton");
     bckgrndPos();
     tilePlace();
     empty();
