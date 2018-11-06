@@ -119,3 +119,15 @@ function try_move () {
         pieces[i].onclick = function(){move(pieces[i])}
     }
 }
+
+function shuffle() {
+    btn.onclick = function() {
+    num_shifts = Math.floor(Math.random() * 20) + 1;
+        for(let i = 0; i <= num_shifts; i++){
+            let mTiles = document.getElementsByClassName("puzzlepiece movablepiece");
+            m_Tiles = Array.from(mTiles);
+            let x = Math.floor(Math.random() * m_Tiles.length);
+            move(m_Tiles[x]);
+        }
+    }
+}
