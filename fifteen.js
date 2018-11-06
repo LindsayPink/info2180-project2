@@ -1,5 +1,3 @@
-let _row = null;
-let _col = null;
 window.onload = function () {
     allPiece = document.body.children[2].children[0].children;
     pieces = Array.from(allPiece);
@@ -100,6 +98,8 @@ function move (tile) {
 }
 
 function moveable () {
+    let _row = null;
+    let _col = null;
     for (let i = 0; i < pieces.length; i++) {
         _row = parseInt($(pieces[i]).css("grid-row-start"));
         _col = parseInt($(pieces[i]).css("grid-column-start"));
