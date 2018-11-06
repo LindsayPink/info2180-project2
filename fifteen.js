@@ -1,3 +1,5 @@
+let _row = null;
+let _col = null;
 window.onload = function () {
     allPiece = document.body.children[2].children[0].children;
     pieces = Array.from(allPiece);
@@ -5,10 +7,9 @@ window.onload = function () {
 
     bckgrndPos();
     tilePlace();
-
-    for(let i=0;i<pieces.length;i++) {
-        pieces[i].onclick = function(){move(pieces[i])}
-    }    
+    empty();
+    moveable();
+    try_move();
 }
 
 function bckgrndPos () {
@@ -87,7 +88,33 @@ function empty () {
 }
 
 function move (tile) {
-    empty();
-    $(tile).css({"grid-row-start":free_row.toString(), "grid-column-start":free_col.toString()});
-    $(tile).attr("id", "tile_"+((free_row).toString())+"_"+((free_col).toString()));
+    if (tile.classList[1] === "movablepiece") { 
+        $(tile).css({"grid-row-start":free_row.toString(), "grid-column-start":free_col.toString()});
+        $(tile).attr("id", "tile_"+((free_row).toString())+"_"+((free_col).toString()));
+        empty();
+        moveable();
+        try_move();
+    }
+}
+
+function moveable () {
+    for (let i = 0; i < pieces.length; i++) {
+        _row = parseInt($(pieces[i]).css("grid-row-start"));
+        _col = parseInt($(pieces[i]).css("grid-column-start"));
+        if ((_row===free_row) && (_col===(free_col+1) || _col===(free_col-1))) {
+            pieces[i].classList.add("movablepiece");
+        }
+        else if ((_col===free_col) && (_row===(free_row+1) || _row===(free_row-1))) {
+            pieces[i].classList.add("movablepiece");
+        }
+        else {
+            pieces[i].classList.remove("movablepiece");
+        }
+    }
+}
+
+function try_move () {
+    for(let i=0;i<pieces.length;i++) {
+        pieces[i].onclick = function(){move(pieces[i])}
+    }
 }
