@@ -1,9 +1,9 @@
 window.onload = function () {
-    allPiece = document.body.children[2].children[0].children;
-    pieces = Array.from(allPiece);
-    $(allPiece).addClass("puzzlepiece");
-    btn = document.getElementById("shufflebutton");
-    num_shifts = 20;
+    allPiece = document.body.children[2].children[0].children; //gets the tile divs in puzzlearea as HTML collection
+    pieces = Array.from(allPiece); //converts HTML collection to array so that array methods can be done on them
+    $(allPiece).addClass("puzzlepiece"); //applies puzzlepiece class to tiles
+    btn = document.getElementById("shufflebutton"); //for accessing shuffle button
+    num_shifts = 20; //initializing var which determine the num of moves to be made when tiles are shuffled
     bckgrndPos();
     tilePlace();
     empty();
@@ -12,7 +12,7 @@ window.onload = function () {
     shuffle();
 }
 
-function bckgrndPos () {
+function bckgrndPos () { //positions background image on each tile
     $(allPiece[0]).css("background-position",  "0000px 0000px");
     $(allPiece[1]).css("background-position",  "-100px 0000px");
     $(allPiece[2]).css("background-position",  "-200px 0000px");
@@ -30,7 +30,7 @@ function bckgrndPos () {
     $(allPiece[14]).css("background-position", "-200px -300px");
 }
 
-function tilePlace () {
+function tilePlace () { //positions tiles in grid row by row
     $("#puzzlearea").css("display", "grid");
     $("#puzzlearea").css("grid-template-columns", "100px 100px 100px 100px");
     $("#puzzlearea").css("grid-template-rows", "100px 100px 100px 100px");
@@ -52,7 +52,7 @@ function tilePlace () {
     }
 }
 
-function findTile (r, c) {    
+function findTile (r, c) { //helper function to determine where empty tile is
     for (let i = 0; i <= pieces.length; i++) {
         if ((parseInt($(pieces[i]).css("grid-row-start")))===r && 
         ((parseInt($(pieces[i]).css("grid-column-start"))))===c) {
@@ -62,6 +62,9 @@ function findTile (r, c) {
 }
 
 function empty () {
+/* determines where empty tile is row by row, and stores row/col components in appropriate vars
+Searching row by row is not problematic since the empty square is only ever in one row
+*/
     for (let i = 0; i <= 3; i++){
         if ((findTile(1,i+1))===undefined) {
             free_row = 1;
@@ -82,7 +85,7 @@ function empty () {
     }
 }
 
-function move (tile) {
+function move (tile) { //helper function to move tile and restart the try_move process
     if (tile.classList[1] === "movablepiece") { 
         $(tile).css({"grid-row-start":free_row.toString(), "grid-column-start":free_col.toString()});
         empty();
@@ -92,6 +95,10 @@ function move (tile) {
 }
 
 function moveable () {
+/* applies or removes movablepiece class based on whether or not tile
+in question is next to the empty square
+First checks if tile is in the same row/column as empty square then if it is
+to the left or right of north or south of it*/
     let _row = null;
     let _col = null;
     for (let i = 0; i < pieces.length; i++) {
@@ -109,15 +116,15 @@ function moveable () {
     }
 }
 
-function try_move () {
+function try_move () { //moves a tile on click if it is moveable
     for(let i=0;i<pieces.length;i++) {
         pieces[i].onclick = function(){move(pieces[i])}
     }
 }
 
-function shuffle() {
+function shuffle() { //rearranges tiles on click of shuffle button using a max of 20 shifts
     btn.onclick = function() {
-    num_shifts = Math.floor(Math.random() * 20) + 1;
+    num_shifts = Math.floor(Math.random() * 20) + 1; //right hand side of assignment ensures num-shifts != 0 but can be 20
         for(let i = 0; i <= num_shifts; i++){
             let mTiles = document.getElementsByClassName("puzzlepiece movablepiece");
             m_Tiles = Array.from(mTiles);
