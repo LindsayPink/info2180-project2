@@ -1,3 +1,6 @@
+/* Extra feature added: Animations and/or transitions
+Description: each tile blinks (fades out then in) when it is clicked and the
+            puzzlearea blinks when shuffle is clicked*/
 window.onload = function () {
     allPiece = document.body.children[2].children[0].children; //gets the tile divs in puzzlearea as HTML collection
     pieces = Array.from(allPiece); //converts HTML collection to array so that array methods can be done on them
@@ -86,8 +89,10 @@ Searching row by row is not problematic since the empty square is only ever in o
 }
 
 function move (tile) { //helper function to move tile and restart the try_move process
-    if (tile.classList[1] === "movablepiece") { 
+    if (tile.classList[1] === "movablepiece") {
+        $(tile).fadeOut();
         $(tile).css({"grid-row-start":free_row.toString(), "grid-column-start":free_col.toString()});
+        $(tile).fadeIn();
         empty();
         moveable();
         try_move();
@@ -117,19 +122,28 @@ to the left or right of north or south of it*/
 }
 
 function try_move () { //moves a tile on click if it is moveable
-    for(let i=0;i<pieces.length;i++) {
-        pieces[i].onclick = function(){move(pieces[i])}
-    }
+    Array.from(pieces).forEach(function(piece) { 
+        piece.onclick = function () {
+            move(piece);
+        }
+    })
 }
 
 function shuffle() { //rearranges tiles on click of shuffle button using a max of 20 shifts
     btn.onclick = function() {
-    num_shifts = Math.floor(Math.random() * 200) + 1; //right hand side of assignment ensures num-shifts != 0 but can be 200
-        for(let i = 0; i <= num_shifts; i++){
-            let mTiles = document.getElementsByClassName("puzzlepiece movablepiece");
-            m_Tiles = Array.from(mTiles);
-            let x = Math.floor(Math.random() * m_Tiles.length);
-            move(m_Tiles[x]);
+        $("#puzzlearea").fadeOut(function (){
+            $("#puzzlearea").fadeIn();
+        })
+    num_shifts = Math.floor(Math.random() * 200) + 1; //right hand side of assignment ensures num-shifts != 0 but can be 200   
+    for(let i = 0; i <= num_shifts; i++){
+        let mTiles = document.getElementsByClassName("puzzlepiece movablepiece");
+        m_Tiles = Array.from(mTiles);
+        let x = Math.floor(Math.random() * m_Tiles.length);
+        if (m_Tiles[x].classList[1] === "movablepiece") {
+            $(m_Tiles[x]).css({"grid-row-start":free_row.toString(), "grid-column-start":free_col.toString()});
+            empty();
+            moveable();
+            try_move();
         }
-    }
+    }}
 }
