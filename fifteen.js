@@ -133,7 +133,7 @@ function shuffle() { //rearranges tiles on click of shuffle button using a max o
     btn.onclick = function() {
         $("#puzzlearea").fadeOut(function (){
             $("#puzzlearea").fadeIn();
-        })
+        });
     num_shifts = Math.floor(Math.random() * 200) + 1; //right hand side of assignment ensures num-shifts != 0 but can be 200   
     for(let i = 0; i <= num_shifts; i++){
         let mTiles = document.getElementsByClassName("puzzlepiece movablepiece");
