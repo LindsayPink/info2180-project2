@@ -124,7 +124,7 @@ function try_move () { //moves a tile on click if it is moveable
 
 function shuffle() { //rearranges tiles on click of shuffle button using a max of 20 shifts
     btn.onclick = function() {
-    num_shifts = Math.floor(Math.random() * 20) + 1; //right hand side of assignment ensures num-shifts != 0 but can be 20
+    num_shifts = Math.floor(Math.random() * 200) + 1; //right hand side of assignment ensures num-shifts != 0 but can be 200
         for(let i = 0; i <= num_shifts; i++){
             let mTiles = document.getElementsByClassName("puzzlepiece movablepiece");
             m_Tiles = Array.from(mTiles);
